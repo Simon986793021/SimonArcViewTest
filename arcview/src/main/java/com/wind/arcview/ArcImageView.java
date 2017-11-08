@@ -28,8 +28,6 @@ public class ArcImageView extends android.support.v7.widget.AppCompatImageView {
     private int height;
     private int ArcHeight = 50;
     private Path path;
-    private String startColor;
-    private String endColor;
     private Bitmap bitmap;
     private float mScale=1.0f;
     public ArcImageView(Context context) {
@@ -45,21 +43,28 @@ public class ArcImageView extends android.support.v7.widget.AppCompatImageView {
     public ArcImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
+    /**
+     * 设置弧形高度
+     */
+    public void setArcHeight(int height)
+    {
+        this.ArcHeight=height;
+    }
+    /**
+     * 设置图片缩放大小
+     * @param scale
+     */
     public void setScale(float scale)
     {
         this.mScale=scale;
     }
     private void init() {
-        Log.i(">>>>>","222222");
         this.paint = new Paint();
         this.paint.setAntiAlias(true);
         this.startPoint = new PointF(0.0F, 0.0F);
         this.endPoint = new PointF(0.0F, 0.0F);
         this.controlPoint = new PointF(0.0F, 0.0F);
         this.path = new Path();
-        this.startColor = "#11cd6e";
-        this.endColor = "#92EFC0";
     }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
